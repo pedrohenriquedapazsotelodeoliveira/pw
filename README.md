@@ -1,1 +1,2 @@
 Pedro Paz
+Bryan Santos
