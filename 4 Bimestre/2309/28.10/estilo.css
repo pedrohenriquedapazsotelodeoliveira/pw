@@ -1,0 +1,561 @@
+
+/* ===== CONFIGURAÇÕES GERAIS ===== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --cor-principal: #7c3aed;
+    --cor-secundaria: #4f46e5;
+    --cor-texto: #1e293b;
+    --cor-borda: #e2e8f0;
+    --cor-fundo: #f8fafc;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    padding: 40px 16px;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: var(--cor-texto);
+
+    background: linear-gradient(
+        -45deg,
+        #0f172a,
+        #312e81,
+        #6d28d9,
+        #4338ca
+    );
+
+    background-size: 400% 400%;
+    animation: fundoAnimado 14s ease infinite;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* ===== ANIMAÇÕES ===== */
+
+@keyframes fundoAnimado {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes brilho {
+    0%, 100% {
+        box-shadow: 0 0 10px rgba(167, 139, 250, 0.15);
+    }
+
+    50% {
+        box-shadow: 0 0 25px rgba(167, 139, 250, 0.4);
+    }
+}
+
+@keyframes sucesso {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ===== CABEÇALHO ===== */
+
+.cabecalho {
+    text-align: center;
+    color: white;
+    margin: 0 auto 30px;
+    animation: aparecer 0.8s ease both;
+}
+
+.icone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 15px;
+
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+
+    color: white;
+    font-size: 30px;
+
+    animation: brilho 3s ease-in-out infinite;
+}
+
+.cabecalho h1 {
+    font-size: clamp(27px, 5vw, 38px);
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+.cabecalho p {
+    color: #ddd6fe;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* ===== CONTAINER ===== */
+
+.container {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* ===== FORMULÁRIO ===== */
+
+#formCadastro {
+    padding: 35px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 22px;
+
+    background: rgba(255, 255, 255, 0.97);
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.25),
+        0 0 30px rgba(196, 181, 253, 0.1);
+
+    animation: aparecer 0.9s ease both;
+
+    transition:
+        box-shadow 0.4s ease,
+        transform 0.4s ease;
+}
+
+#formCadastro:hover {
+    box-shadow:
+        0 30px 70px rgba(0, 0, 0, 0.3),
+        0 0 35px rgba(196, 181, 253, 0.2);
+}
+
+/* ===== TÍTULOS DAS SEÇÕES ===== */
+
+.secao-titulo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin: 15px 0 25px;
+    padding-bottom: 14px;
+
+    border-bottom: 1px solid var(--cor-borda);
+}
+
+.secao-titulo:not(:first-child) {
+    margin-top: 32px;
+}
+
+.secao-titulo span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 38px;
+    height: 38px;
+
+    border-radius: 12px;
+    background: #ede9fe;
+
+    color: var(--cor-principal);
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.secao-titulo h2 {
+    color: #312e81;
+    font-size: 19px;
+}
+
+/* ===== CAMPOS ===== */
+
+.campo {
+    min-width: 0;
+    margin-bottom: 20px;
+}
+
+.campo label {
+    display: block;
+    margin-bottom: 8px;
+
+    color: #334155;
+    font-size: 14px;
+    font-weight: 700;
+
+    transition: color 0.3s ease;
+}
+
+.campo:focus-within label {
+    color: var(--cor-principal);
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    padding: 13px 14px;
+
+    border: 1.5px solid var(--cor-borda);
+    border-radius: 10px;
+
+    outline: none;
+    background: var(--cor-fundo);
+    color: var(--cor-texto);
+
+    font-size: 15px;
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease,
+        transform 0.3s ease;
+}
+
+/* Efeito ao passar o mouse */
+
+.campo input:hover,
+.campo select:hover,
+.campo textarea:hover {
+    border-color: #c4b5fd;
+    background: white;
+}
+
+/* Efeito de brilho ao selecionar */
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+    border-color: #8b5cf6;
+    background: white;
+
+    box-shadow:
+        0 0 0 4px rgba(139, 92, 246, 0.13),
+        0 5px 15px rgba(139, 92, 246, 0.08);
+
+    transform: translateY(-2px);
+}
+
+.campo input::placeholder,
+.campo textarea::placeholder {
+    color: #94a3b8;
+    transition: opacity 0.3s ease;
+}
+
+.campo input:focus::placeholder,
+.campo textarea:focus::placeholder {
+    opacity: 0.55;
+}
+
+.campo select {
+    cursor: pointer;
+}
+
+.campo textarea {
+    min-height: 110px;
+    resize: vertical;
+    line-height: 1.6;
+}
+
+.campo small {
+    display: block;
+    margin-top: 7px;
+    color: #64748b;
+    font-size: 12px;
+}
+
+/* ===== CAMPOS LADO A LADO ===== */
+
+.linha {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+/* ===== TERMOS ===== */
+
+.termos {
+    padding: 15px;
+    margin: 5px 0 20px;
+
+    border: 1px solid #ddd6fe;
+    border-radius: 10px;
+
+    background: #f5f3ff;
+}
+
+.termos label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.6;
+
+    cursor: pointer;
+}
+
+.termos input {
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+    margin-top: 2px;
+
+    accent-color: var(--cor-principal);
+    cursor: pointer;
+}
+
+/* ===== BOTÕES ===== */
+
+.botoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.btn-cadastrar,
+.btn-limpar {
+    position: relative;
+    overflow: hidden;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    min-height: 48px;
+    padding: 13px 22px;
+
+    border: none;
+    border-radius: 11px;
+
+    font-size: 14px;
+    font-weight: 750;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+}
+
+.btn-cadastrar {
+    flex: 1;
+
+    background: linear-gradient(
+        135deg,
+        #7c3aed,
+        #4f46e5
+    );
+
+    color: white;
+
+    box-shadow: 0 6px 18px rgba(124, 58, 237, 0.25);
+}
+
+.btn-cadastrar:hover {
+    background: linear-gradient(
+        135deg,
+        #6d28d9,
+        #4338ca
+    );
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 12px 25px rgba(124, 58, 237, 0.35);
+}
+
+.btn-cadastrar:active,
+.btn-limpar:active {
+    transform: scale(0.97);
+}
+
+.btn-limpar {
+    background: #e2e8f0;
+    color: #334155;
+}
+
+.btn-limpar:hover {
+    background: #cbd5e1;
+    transform: translateY(-3px);
+}
+
+/* ===== AVISO ===== */
+
+.aviso {
+    margin-top: 20px;
+    color: #64748b;
+    font-size: 12px;
+}
+
+/* ===== RESULTADO DO CADASTRO ===== */
+
+.resultado {
+    padding: 35px;
+    margin-top: 25px;
+
+    text-align: center;
+
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 20px;
+
+    background: white;
+
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+
+    animation: sucesso 0.5s ease both;
+}
+
+.resultado[hidden] {
+    display: none;
+}
+
+.sucesso-icone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 65px;
+    height: 65px;
+    margin: 0 auto 18px;
+
+    border-radius: 50%;
+    background: #dcfce7;
+    color: #15803d;
+
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.resultado h2 {
+    margin-bottom: 12px;
+    color: #166534;
+    font-size: 25px;
+}
+
+#resultado {
+    margin-bottom: 22px;
+    color: #475569;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+.resultado .btn-cadastrar {
+    width: 100%;
+}
+
+/* ===== RODAPÉ ===== */
+
+footer {
+    padding: 25px 10px 10px;
+    text-align: center;
+
+    color: #ddd6fe;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+
+@media (max-width: 600px) {
+    body {
+        padding: 25px 12px;
+    }
+
+    .cabecalho {
+        margin-bottom: 24px;
+    }
+
+    .cabecalho h1 {
+        font-size: 28px;
+    }
+
+    #formCadastro {
+        padding: 24px 18px;
+        border-radius: 17px;
+    }
+
+    .linha {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .secao-titulo h2 {
+        font-size: 17px;
+    }
+
+    .botoes {
+        flex-direction: column;
+    }
+
+    .btn-cadastrar,
+    .btn-limpar {
+        width: 100%;
+        min-height: 48px;
+    }
+
+    .resultado {
+        padding: 25px 18px;
+    }
+}
+
+/* ===== ACESSIBILIDADE ===== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}
